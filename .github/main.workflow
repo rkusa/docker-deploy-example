@@ -1,6 +1,6 @@
 workflow "Docker" {
   on = "push"
-  resolves = ["Docker Deploy"]
+  resolves = ["Docker Push"]
 }
 
 action "Docker Build" {
@@ -26,8 +26,8 @@ action "Docker Login" {
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
 
-action "Docker Deploy" {
+action "Docker Push" {
   uses = "actions/docker/cli@master"
   needs = ["Docker Login"]
-  args = "deploy rkusa/docker-deploy-example"
+  args = "push rkusa/docker-deploy-example"
 }
