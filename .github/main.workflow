@@ -17,7 +17,7 @@ action "Branch: master" {
 action "Docker Tag" {
   uses = "actions/docker/tag@master"
   needs = ["Branch: master"]
-  args = "docker-deploy-example rkusa/docker-deploy-example"
+  args = "--no-sha docker-deploy-example rkusa/docker-deploy-example"
 }
 
 action "Docker Login" {
